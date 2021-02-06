@@ -1,5 +1,16 @@
 .panel{
-    height: 400px;
-    width: 200px;
-    background-color: red;
+    width: 80%;
+    background-color: rgb(235, 236, 240);
+}
+
+.task_card{
+    background-color: ghostwhite;
+    margin-bottom: 10px;
+}
+
+.card_body{
+    padding:10px;
+}
+.card_header{
+    padding:10px;
 }
