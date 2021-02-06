@@ -12,17 +12,16 @@ function Home() {
         <div>
             <Navbar />
             <Container fluid>
-
                 <Container>
                     <br /><br /><br />
                     <Row>
-                        <Col lg="4" sm="12">
+                        <Col lg="4" md="4" sm="12">
                             <Board key="1" title="Da fare" tasks={[]} />
                         </Col>
-                        <Col lg="4" sm="12">
+                        <Col lg="4" md="4" sm="12">
                             <Board key="2" title="Fatto" tasks={[]} />
                         </Col>
-                        <Col lg="4" sm="12">
+                        <Col lg="4" md="4" sm="12">
                             <Board key="3" title="Urgente" tasks={[]} />
                         </Col>
                     </Row>
