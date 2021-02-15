@@ -2,12 +2,14 @@ import { useEffect, useState } from "react"
 import styles from '../styles/board.module.css'
 import { Card, CardBody, CardHeader, Badge, CardFooter, FormInput } from "shards-react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-
+import { EditText } from 'react-edit-text';
+import 'react-edit-text/dist/index.css';
 
 
 function Board(props) {
-    const [tasks, updateTasks] = useState(props.tasks)
-    const [inputData, setInputData] = useState()
+    const [boardTitle, setBoardTitle] = useState(props.title)//Next fetch with a DB for title too
+    const [tasks, updateTasks] = useState(props.tasks)//Next fetch with a DB for tasks
+    const [inputData, setInputData] = useState() //New task
 
     const onDragEnds = (result) => {
         if (!result.destination) return
@@ -25,12 +27,22 @@ function Board(props) {
             updateTasks([...tasks])
             console.log(tasks)
         }
-
     }
 
     return (
         <Card className={styles.panel}>
-            <CardHeader className={styles.card_header}><h5>{props.title}</h5></CardHeader>
+            <CardHeader className={styles.card_header}>
+                <h5>
+                    <EditText
+                        name="textbox1"
+                        value={boardTitle}
+                        onChange={setBoardTitle}
+                    />
+                </h5>
+                <p>
+                    {"Testo il save: " + boardTitle}
+                </p>
+            </CardHeader>
             <CardBody className={styles.card_body}>
                 <DragDropContext onDragEnd={onDragEnds}>
                     <Droppable droppableId="tasks">
