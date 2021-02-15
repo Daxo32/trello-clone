@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { Row, Container, Col, Button } from "shards-react"
 import Board from '../components/Board'
 import Navbar from '../components/NavbarComp'
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import styles from '../styles/Home.module.css'
 
 
@@ -12,14 +11,15 @@ function Home() {
 
 
     const addNewBoard = () => {
-        console.log(boards)
+
         setBoards(boards.concat(
             {
-                id: 0,
+                id: boards.length > 0 ? boards[boards.length - 1].id + 1 : 0,
                 title: "New Section",
                 tasks: []
             }
         ))
+
     }
 
     return (
@@ -31,7 +31,7 @@ function Home() {
                         ? boards.map((board, index) => {
                             return (
                                 <Col sm="12" md="6" lg="3" key={index}>
-                                    <Board key={index} title={board.title} tasks={board.tasks} />
+                                    <Board key={index} title={board.title} id={board.id} tasks={board.tasks} />
                                 </Col>)
 
                         })

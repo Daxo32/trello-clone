@@ -8,9 +8,13 @@ import 'react-edit-text/dist/index.css';
 
 
 function Board(props) {
-    const [boardTitle, setBoardTitle] = useState(props.title)//Next fetch with a DB for title too
+    const [boardTitle, setBoardTitle] = useState(props.title)
     const [tasks, updateTasks] = useState(props.tasks)//Next fetch with a DB for tasks
     const [inputData, setInputData] = useState() //New task
+
+    useEffect(() => {
+        //FETCH TO API TO RETRIEVE THE TASKS FOR THE BOARD
+    }, [])
 
     const onDragEnds = (result) => {
         if (!result.destination) return
@@ -20,13 +24,18 @@ function Board(props) {
 
         local.splice(result.destination.index, 0, new_item)
         updateTasks(local)
-        console.log(local)
+        //FETCH
+        //TODO fetch to API
+
     }
 
     const handleEnter = (event) => {
         if (event.keyCode == 13) {
             tasks.push({ text: inputData })
             updateTasks([...tasks])
+            //FETCH
+            //TODO fetch to API
+
         }
     }
 
@@ -41,6 +50,7 @@ function Board(props) {
                         onChange={setBoardTitle}
                     />
                 </h5>
+                <h5>{props.id}</h5>
             </CardHeader>
             <CardBody className={styles.card_body}>
                 <DragDropContext onDragEnd={onDragEnds}>
