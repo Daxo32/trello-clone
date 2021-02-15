@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import styles from '../styles/board.module.css'
-import { Card, CardBody, CardHeader, Badge, CardFooter, FormInput } from "shards-react";
+import { Card, CardBody, CardHeader, CardFooter, FormInput } from "shards-react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { EditText } from 'react-edit-text';
+import Task from '../components/Task'
 import 'react-edit-text/dist/index.css';
 
 
@@ -16,18 +17,19 @@ function Board(props) {
         let local = Array.from(tasks)
         //Ok remove the element from the update the value of the destination position
         let [new_item] = local.splice(result.source.index, 1)
-        console.log(new_item)
+
         local.splice(result.destination.index, 0, new_item)
         updateTasks(local)
+        console.log(local)
     }
 
     const handleEnter = (event) => {
         if (event.keyCode == 13) {
             tasks.push({ text: inputData })
             updateTasks([...tasks])
-            console.log(tasks)
         }
     }
+
 
     return (
         <Card className={styles.panel}>
@@ -39,9 +41,6 @@ function Board(props) {
                         onChange={setBoardTitle}
                     />
                 </h5>
-                <p>
-                    {"Testo il save: " + boardTitle}
-                </p>
             </CardHeader>
             <CardBody className={styles.card_body}>
                 <DragDropContext onDragEnd={onDragEnds}>
@@ -52,14 +51,13 @@ function Board(props) {
                                     return (
                                         <Draggable key={index} draggableId={"draggable-" + index} index={index}>
                                             {(provided) => (
-                                                <Card key={index} className={styles.task_card}
+                                                <Card key={"drag-" + text} className={styles.task_card}
                                                     innerRef={provided.innerRef}
                                                     {...provided.draggableProps}
                                                     {...provided.dragHandleProps}
                                                 >
                                                     <CardBody key={index} className={styles.card_body}>
-                                                        <p>{text}</p>
-                                                        <Badge theme="warning">tag</Badge>
+                                                        <Task key={index} text_v={text} />
                                                     </CardBody>
                                                 </Card>
                                             )}
@@ -73,7 +71,7 @@ function Board(props) {
                 </DragDropContext>
             </CardBody>
             <CardFooter>
-                <FormInput size="sm" placeholder="Inserisci" onChange={(evt) => setInputData(evt.target.value)} className="mb-2" onKeyDown={handleEnter} />
+                <FormInput size="sm" placeholder="Inserisci task" onChange={(evt) => setInputData(evt.target.value)} className="mb-2" onKeyDown={handleEnter} />
             </CardFooter>
         </Card>
     )
