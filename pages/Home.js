@@ -70,7 +70,7 @@ function Home() {
                     }
                     <Col>
                         <div className={styles.mainCont__addBoard}>
-                            <Button onClick={() => addNewBoard()}>Nuova</Button>
+                            <Button onClick={() => addNewBoard()}>Nuova sezione</Button>
                         </div>
                     </Col>
                 </Row>

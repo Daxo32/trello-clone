@@ -11,8 +11,10 @@
 .boardPanel__header{
     padding:10px;
     
-    .boardPanel__closeCross{
-        position: absolute;
+    .boardPanel__header__mainRow{
+        flex-wrap: nowrap;
+    }
+    .boardPanel__header__closeCross{
         margin-top:5px;
         cursor: pointer;
     }
