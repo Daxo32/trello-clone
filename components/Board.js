@@ -82,7 +82,7 @@ function Board(props) {
         <Card className={styles.boardPanel}>
             <CardHeader className={styles.boardPanel__header}>
                 <Container fluid>
-                    <Row>
+                    <Row className={styles.boardPanel__header__mainRow}>
                         <Col sm="10" md="10" lg="10">
                             <h5 onKeyDown={pushBoardTitleUpdate}>
                                 <EditText
@@ -93,7 +93,7 @@ function Board(props) {
                             </h5>
                         </Col>
                         <Col sm="2" md="2" lg="2">
-                            <HiX className={styles.boardPanel__closeCross} size="1.8em" onClick={() => props.removeBoardFunc(props.id)} />
+                            <HiX className={styles.boardPanel__header__closeCross} size="1.8em" onClick={() => props.removeBoardFunc(props.id)} />
                         </Col>
                     </Row>
                 </Container>
