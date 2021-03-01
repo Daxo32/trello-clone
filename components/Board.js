@@ -23,7 +23,7 @@ function Board(props) {
     ///
 
     useEffect(() => {
-        //FETCH TO API TO RETRIEVE THE TASKS FOR THE BOARD
+
     }, [])
 
     const onDragEnds = (result) => {
@@ -84,7 +84,7 @@ function Board(props) {
                 <Container fluid>
                     <Row className={styles.boardPanel__header__mainRow}>
                         <Col sm="10" md="10" lg="10">
-                            <h5 onKeyDown={pushBoardTitleUpdate}>
+                            <h5 onKeyDown={pushBoardTitleUpdate} on>
                                 <EditText
                                     name="textbox1"
                                     value={boardTitle}

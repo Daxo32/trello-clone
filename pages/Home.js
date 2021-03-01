@@ -6,8 +6,11 @@ import styles from '../styles/Home.module.scss'
 
 
 function Home() {
-
     const [boards, setBoards] = useState([])
+
+    useEffect(() => {
+        //Fetch the boards
+    }, [])
 
     const addNewBoard = () => {
         setBoards(boards.concat(
@@ -17,6 +20,8 @@ function Home() {
                 tasks: []
             }
         ))
+        //Fetch with the backend to push the update
+        //TO-DO
     }
 
     //Removes a board by the board_id
@@ -31,6 +36,8 @@ function Home() {
         })
         console.log(temp)
         setBoards([...temp])
+        //Fetch with the backend to push the update
+        //TO-DO
     }
 
     //Fetches the board info by board_id 
@@ -48,9 +55,8 @@ function Home() {
         })
         console.log(temp)
         setBoards([...temp])
-
-        ///FETCH WITH BACKEND
-        ///DB
+        //Fetch with the backend to push the update
+        //TO-DO
     }
 
     return (
