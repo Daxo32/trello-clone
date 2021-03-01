@@ -36,6 +36,7 @@ function Board(props) {
         updateTasks(local)
         //FETCH
         //TODO fetch to API
+        props.updateBoardFunc(props.id, boardTitle, tasks)
 
     }
 
@@ -46,7 +47,7 @@ function Board(props) {
             updateTasks([...tasks])
             //FETCH
             //TODO fetch to API
-
+            props.updateBoardFunc(props.id, boardTitle, tasks)
         }
     }
 
@@ -55,10 +56,11 @@ function Board(props) {
         console.log(task_text)
         let temp = tasks
         temp[task_index] = ({ text: task_text })
-        updateTasks([...tasks])
+        updateTasks([...temp])
         //UPDATE TASK INFO 
         //FETCH
         //TODO fetch to API
+        props.updateBoardFunc(props.id, boardTitle, tasks)
     }
 
     //Set the current task hooks and opens the modal
