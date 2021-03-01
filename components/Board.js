@@ -84,7 +84,7 @@ function Board(props) {
                 <Container fluid>
                     <Row className={styles.boardPanel__header__mainRow}>
                         <Col sm="10" md="10" lg="10">
-                            <h5 onKeyDown={pushBoardTitleUpdate} on>
+                            <h5 onKeyDown={pushBoardTitleUpdate}>
                                 <EditText
                                     name="textbox1"
                                     value={boardTitle}
