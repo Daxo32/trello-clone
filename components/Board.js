@@ -34,8 +34,8 @@ function Board(props) {
 
         local.splice(result.destination.index, 0, new_item)
         updateTasks(local)
-        //FETCH
-        //TODO fetch to API
+
+        //Backpropagate the updated
         props.updateBoardFunc(props.id, boardTitle, tasks)
 
     }
@@ -45,8 +45,8 @@ function Board(props) {
         if (event.keyCode == 13) {
             tasks.push({ text: inputData })
             updateTasks([...tasks])
-            //FETCH
-            //TODO fetch to API
+
+            //Backpropagate the update
             props.updateBoardFunc(props.id, boardTitle, tasks)
         }
     }
@@ -57,9 +57,8 @@ function Board(props) {
         let temp = tasks
         temp[task_index] = ({ text: task_text })
         updateTasks([...temp])
-        //UPDATE TASK INFO 
-        //FETCH
-        //TODO fetch to API
+
+        //Backpropagate the update
         props.updateBoardFunc(props.id, boardTitle, tasks)
     }
 
@@ -71,13 +70,21 @@ function Board(props) {
     }
     //
 
+    //I push the board title update when the user press ENTER on the title tag
+    const pushBoardTitleUpdate = (evt) => {
+        if (evt.keyCode == 13) { //Update only on ENTER keydown
+            //Backpropagate the update
+            props.updateBoardFunc(props.id, boardTitle, tasks)
+        }
+    }
+
     return (
         <Card className={styles.boardPanel}>
             <CardHeader className={styles.boardPanel__header}>
                 <Container fluid>
                     <Row>
                         <Col sm="10" md="10" lg="10">
-                            <h5>
+                            <h5 onKeyDown={pushBoardTitleUpdate}>
                                 <EditText
                                     name="textbox1"
                                     value={boardTitle}
