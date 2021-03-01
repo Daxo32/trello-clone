@@ -19,6 +19,7 @@ function Home() {
         ))
     }
 
+    //Removes a board by the board_id
     const removeBoard = (board_id) => {
         console.log(board_id)
         let temp = boards
@@ -32,6 +33,7 @@ function Home() {
         setBoards([...temp])
     }
 
+    //Fetches the board info by board_id 
     const updateBoard = (board_id, board_title, board_tasks) => {
         console.log(board_id, board_title, board_tasks)
         let temp = boards
@@ -46,6 +48,9 @@ function Home() {
         })
         console.log(temp)
         setBoards([...temp])
+
+        ///FETCH WITH BACKEND
+        ///DB
     }
 
     return (
