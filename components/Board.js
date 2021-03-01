@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
-import styles from '../styles/board.module.css'
-import { Card, CardBody, CardHeader, CardFooter, FormInput } from "shards-react";
+import styles from '../styles/board.module.scss'
+import { Card, CardBody, CardHeader, CardFooter, FormInput, Button, Container, Row, Col } from "shards-react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { EditText } from 'react-edit-text';
+import { HiX } from "react-icons/hi";
 import Task from '../components/Task'
 import ModalTask from '../components/ModalTask'
 import 'react-edit-text/dist/index.css';
@@ -69,18 +70,27 @@ function Board(props) {
     //
 
     return (
-        <Card className={styles.panel}>
-            <CardHeader className={styles.card_header}>
-                <h5>
-                    <EditText
-                        name="textbox1"
-                        value={boardTitle}
-                        onChange={setBoardTitle}
-                    />
-                </h5>
-                {/* <h5>{props.id}</h5> */}
+        <Card className={styles.boardPanel}>
+            <CardHeader className={styles.boardPanel__header}>
+                <Container fluid>
+                    <Row>
+                        <Col sm="10" md="10" lg="10">
+                            <h5>
+                                <EditText
+                                    name="textbox1"
+                                    value={boardTitle}
+                                    onChange={setBoardTitle}
+                                />
+                            </h5>
+                            {props.id}
+                        </Col>
+                        <Col sm="2" md="2" lg="2">
+                            <HiX className={styles.boardPanel__closeCross} size="1.8em" onClick={() => props.removeBoardFunc(props.id)} />
+                        </Col>
+                    </Row>
+                </Container>
             </CardHeader>
-            <CardBody className={styles.card_body}>
+            <CardBody className={styles.boardPanel__body}>
                 <DragDropContext onDragEnd={onDragEnds}>
                     <Droppable droppableId="tasks">
                         {provided => (

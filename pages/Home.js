@@ -11,7 +11,6 @@ function Home() {
 
 
     const addNewBoard = () => {
-
         setBoards(boards.concat(
             {
                 id: boards.length > 0 ? boards[boards.length - 1].id + 1 : 0,
@@ -19,7 +18,19 @@ function Home() {
                 tasks: []
             }
         ))
+    }
 
+    const removeBoard = (board_id) => {
+        console.log(board_id)
+        let temp = boards
+        boards.forEach((board, index) => {
+            if (board.id == board_id) {
+                console.log(index)
+                temp.splice(index, 1)
+            }
+        })
+        console.log(temp)
+        setBoards([...temp])
     }
 
     return (
@@ -31,7 +42,7 @@ function Home() {
                         ? boards.map((board, index) => {
                             return (
                                 <Col sm="12" md="6" lg="3" key={index}>
-                                    <Board key={index} title={board.title} id={board.id} tasks={board.tasks} />
+                                    <Board key={index} title={board.title} id={board.id} tasks={board.tasks} removeBoardFunc={removeBoard} />
                                 </Col>)
 
                         })

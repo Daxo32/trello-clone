@@ -1,0 +1,31 @@
+.boardPanel{
+    margin-top:40px;    
+    flex-basis: auto;
+    background-color: rgb(235, 236, 240);
+}
+
+.boardPanel__body{
+    padding:10px;
+}
+.boardPanel__header{
+    padding:10px;
+    
+    .boardPanel__closeCross{
+        position: absolute;
+        margin-top:5px;
+        cursor: pointer;
+    }
+}
+
+
+.task_card{
+    background-color: ghostwhite;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .boardPanel{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+  }
