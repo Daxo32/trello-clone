@@ -91,7 +91,6 @@ function Board(props) {
                                     onChange={setBoardTitle}
                                 />
                             </h5>
-                            {props.id}
                         </Col>
                         <Col sm="2" md="2" lg="2">
                             <HiX className={styles.boardPanel__closeCross} size="1.8em" onClick={() => props.removeBoardFunc(props.id)} />
@@ -128,7 +127,7 @@ function Board(props) {
                 </DragDropContext>
             </CardBody>
             <CardFooter>
-                <FormInput size="sm" placeholder="Inserisci task" onChange={(evt) => setInputData(evt.target.value)} className="mb-2" onKeyDown={handleEnter} />
+                <FormInput size="sm" placeholder="Inserisci nuovo task" onChange={(evt) => setInputData(evt.target.value)} className="mb-2" onKeyDown={handleEnter} />
             </CardFooter>
 
             {/*ModalTask
