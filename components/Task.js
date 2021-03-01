@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Badge, Container, Row, Col } from "shards-react";
-import styles from '../styles/task.module.css'
 export default function Task(props) {
     return (
         <div>

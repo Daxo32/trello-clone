@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Row, Container, Col, Button } from "shards-react"
 import Board from '../components/Board'
 import Navbar from '../components/NavbarComp'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
 
 
 function Home() {
@@ -13,7 +13,7 @@ function Home() {
         setBoards(boards.concat(
             {
                 id: boards.length > 0 ? boards[boards.length - 1].id + 1 : 0,
-                title: "New Section",
+                title: "Nuova Sezione",
                 tasks: []
             }
         ))
@@ -54,10 +54,10 @@ function Home() {
     }
 
     return (
-        <Container fluid className={styles.main_cont}>
+        <Container fluid className={styles.mainCont}>
             <Navbar />
-            <Container fluid className={styles.boards_container}>
-                <Row className={styles.main_row}>
+            <Container fluid className={styles.mainCont__boardsContainer}>
+                <Row className={styles.mainCont__mainRow}>
                     {boards
                         ? boards.map((board, index) => {
                             return (
@@ -69,13 +69,13 @@ function Home() {
                         : "Loading..."
                     }
                     <Col>
-                        <div className={styles.add_board}>
-                            <Button onClick={() => addNewBoard()}>ADD</Button>
+                        <div className={styles.mainCont__addBoard}>
+                            <Button onClick={() => addNewBoard()}>Nuova</Button>
                         </div>
                     </Col>
                 </Row>
             </Container>
-        </Container>
+        </Container >
 
 
     )
