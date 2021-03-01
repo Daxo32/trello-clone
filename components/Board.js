@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import styles from '../styles/board.module.css'
-import { Card, CardBody, CardHeader, CardFooter, FormInput, Modal, ModalBody, ModalFooter, ModalHeader, Form, FormGroup, Button } from "shards-react";
+import { Card, CardBody, CardHeader, CardFooter, FormInput } from "shards-react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { EditText } from 'react-edit-text';
 import Task from '../components/Task'
@@ -78,7 +78,7 @@ function Board(props) {
                         onChange={setBoardTitle}
                     />
                 </h5>
-                <h5>{props.id}</h5>
+                {/* <h5>{props.id}</h5> */}
             </CardHeader>
             <CardBody className={styles.card_body}>
                 <DragDropContext onDragEnd={onDragEnds}>
