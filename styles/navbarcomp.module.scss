@@ -1,0 +1,23 @@
+$primary : #007bff;
+
+.navbar{
+    justify-content: space-around;
+    .navbar__userDisplayedName{
+        color:whitesmoke;
+        padding-right: 50px;
+    }
+
+    .navbar__actionsContainer{
+        display: flex;
+        padding:10px;
+        border: 1px solid white;
+    }
+    .navbar__logout{
+        color:$primary;
+        cursor: pointer;
+
+        &:hover{
+            opacity: 0.8;
+        }
+    }
+}

@@ -2,26 +2,5 @@
   margin:0; 
   padding:0;
   height: 100vh;
-
-  .mainCont__mainRow{
-    flex-wrap: nowrap;
-  }
-
-  .mainCont__boardsContainer{
-    padding-left:15px;
-    padding-right: 15px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    height: 90%;
-  }
-  
-  .mainCont__addBoard{
-    margin-top: 40px;
-    display: flex;
-    flex-direction: row;
-      button{
-        width: 150px;
-      }
-  }
 }
 

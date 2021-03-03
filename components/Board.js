@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import styles from '../styles/board.module.scss'
 import { Card, CardBody, CardHeader, CardFooter, FormInput, Button, Container, Row, Col } from "shards-react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
@@ -6,9 +6,8 @@ import { EditText } from 'react-edit-text';
 import { HiX } from "react-icons/hi";
 import Task from '../components/Task'
 import ModalTask from '../components/ModalTask'
-import { mainContext } from '../providers/AuthContext'
 import 'react-edit-text/dist/index.css';
-
+import { mainContext } from '../providers/AuthContext'
 
 function Board(props) {
     const [boardTitle, setBoardTitle] = useState(props.title)
@@ -22,7 +21,6 @@ function Board(props) {
     const [modalTextTask, setModalTextTask] = useState("")
     const [modalIndexTask, setModalIndexTask] = useState("")
     ///
-    //context
     const context = useContext(mainContext)
 
     useEffect(() => {
@@ -84,7 +82,6 @@ function Board(props) {
     return (
         <Card className={styles.boardPanel}>
             <CardHeader className={styles.boardPanel__header}>
-                <span onClick={context.doLogin}>CIAO</span>
                 <Container fluid>
                     <Row className={styles.boardPanel__header__mainRow}>
                         <Col sm="10" md="10" lg="10">
