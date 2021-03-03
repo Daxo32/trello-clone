@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from "react"
-import { Row, Container, Col, Button } from "shards-react"
+import { useContext, useEffect } from "react"
+import { Container } from "shards-react"
 import BoardsManager from '../components/BoardsManager'
 import Navbar from '../components/NavbarComp'
+import Footer from '../components/Footer'
 import styles from '../styles/Home.module.scss'
 import { mainContext } from '../providers/AuthContext'
 
 function Home() {
-    const [boards, setBoards] = useState([])
 
     const context = useContext(mainContext)
 
@@ -19,6 +19,7 @@ function Home() {
         <Container fluid className={styles.mainCont}>
             <Navbar />
             <BoardsManager />
+            <Footer />
         </Container >
 
 

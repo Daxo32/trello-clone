@@ -1,4 +1,4 @@
-$primary : #007bff;
+
 
 .navbar{
     justify-content: space-around;
@@ -9,11 +9,9 @@ $primary : #007bff;
 
     .navbar__actionsContainer{
         display: flex;
-        padding:10px;
-        border: 1px solid white;
     }
     .navbar__logout{
-        color:$primary;
+        color:#007bff;
         cursor: pointer;
 
         &:hover{
