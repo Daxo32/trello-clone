@@ -3,14 +3,13 @@ import 'firebase/auth'
 
 
 const firebase_config = {
-    apiKey: "AIzaSyD2QK5v3z7j23sY74h-KS-a1Fhm9xIqMcQ",
-    authDomain: "trello-clone-15f4a.firebaseapp.com",
-    projectId: "trello-clone-15f4a",
-    storageBucket: "trello-clone-15f4a.appspot.com",
-    messagingSenderId: "572455070873",
-    appId: "1:572455070873:web:a9a4162cd4d393ceb4dc08"
+    apiKey: process.env.REACT_APP_FIREBASE_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APPID
 }
-
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebase_config);
