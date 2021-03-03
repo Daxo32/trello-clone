@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Row, Container, Col, Button } from "shards-react"
 import Board from '../components/Board'
 import Navbar from '../components/NavbarComp'
 import styles from '../styles/Home.module.scss'
-
+import { mainContext } from '../providers/AuthContext'
 
 function Home() {
     const [boards, setBoards] = useState([])
 
+    const context = useContext(mainContext)
+
     useEffect(() => {
         //Fetch the boards
+        console.log(context.userToken)
     }, [])
 
     const addNewBoard = () => {
