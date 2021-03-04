@@ -169,7 +169,7 @@ function BoardsList() {
                                                             onClick={() => { toggleDialog(true); setClickedBoardIndex(board_index); setClickedTaskIndex(task_index) }}
                                                         >
                                                             <CardBody key={task_index} className={styles.card_body}>
-                                                                <Task key={item.id} deltask={delTask} index_task={task_index} index_board={board_index} text_v={item.content} />
+                                                                <Task key={item.id} index_task={task_index} index_board={board_index} text_v={item.content} />
                                                             </CardBody>
                                                         </Card>
                                                     )}
