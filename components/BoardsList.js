@@ -195,35 +195,8 @@ function BoardsList() {
                 </Col>
             </Row>
         </DragDropContext>
-        //         <div className={styles.mainBoardsContainer__addBoard}>
-        //             <Button onClick={() => {
-        //                 setBoards([...boards, []]);
-        //             }}>Nuova sezione</Button>
-        //         </div>
-        //         {/* <button
-        //                 type="button"
-        //                 onClick={() => {
-        //                     setBoards([...boards, getItems(1)]);
-        //                 }}
-        //             >
-        //                 Add new item
-        //   </button> */}
     );
 }
-
-{/* <button
-    type="button"
-    onClick={() => {
-        const newBoards = [...boards];
-        newBoards[ind].tasks.splice(index, 1);
-        setBoards(
-            newBoards.filter(group => group.tasks.length)
-        );
-    }}
->
-    delete
-</button> */}
-
 export default withAuth(BoardsList)
 
 
