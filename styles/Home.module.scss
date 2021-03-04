@@ -4,3 +4,10 @@
   height: 100vh;
 }
 
+.mainBoardsContainer{
+  padding-left:15px;
+  padding-right: 15px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 90%;
+}

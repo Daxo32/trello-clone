@@ -5,8 +5,13 @@
 }
 
 .boardPanel__body{
-    padding:10px;
+    overflow-y: auto;
+    max-height: 60vh;
 }
+
+.mainBoardsContainer__mainRow{
+    flex-wrap: nowrap;
+  }
 
 .boardPanel__header{
     padding:10px;
