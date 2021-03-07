@@ -12,7 +12,6 @@ const firebase_config = {
 }
 
 if (!firebase.apps.length) {
-    console.log(firebase_config)
     firebase.initializeApp(firebase_config);
 } else {
     firebase.app(); // if already initialized, use that one

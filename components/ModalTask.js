@@ -26,6 +26,7 @@ function ModalTask(props) {
                  * OnClick trigger the function that updates the task info
                  */}
                 <Button onClick={() => { props.updateTaskFunc(props.board_idx, props.task_idx, currentText); props.toggleFunc(false) }}>Salva</Button>
+                <Button theme="danger" onClick={() => { props.deltask(props.board_idx, props.task_idx); props.toggleFunc(false) }}>Elimina</Button>
             </ModalFooter>
         </Modal>
     )

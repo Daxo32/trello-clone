@@ -46,7 +46,7 @@ function BoardsList() {
         const { source, destination } = result;
 
         // dropped outside the list
-        if (!destination) return
+        if (!destination) { console.log(result); return }
 
         const sInd = +source.droppableId;
         const dInd = +destination.droppableId;
@@ -64,7 +64,8 @@ function BoardsList() {
             newBoards[sInd].tasks = result[sInd];
             newBoards[dInd].tasks = result[dInd];
 
-            setBoards(newBoards.filter(group => group.tasks.length));
+            //setBoards(newBoards.filter(group => group.tasks.length));
+            setBoards(newBoards);
 
         }
     }
@@ -117,7 +118,7 @@ function BoardsList() {
     return (
         <DragDropContext onDragEnd={onDragEnd}>
 
-            { openDialog && <ModalTask openFunc={openDialog} toggleFunc={toggleDialog} boards={boards} board_idx={clicked_board_index} task_idx={clicked_task_index} updateTaskFunc={updateTaskInfo} />}
+            { openDialog && <ModalTask openFunc={openDialog} toggleFunc={toggleDialog} boards={boards} board_idx={clicked_board_index} task_idx={clicked_task_index} deltask={delTask} updateTaskFunc={updateTaskInfo} />}
 
             <Row className={styles.mainBoardsContainer__mainRow}>
                 {boards.map((el, board_index) => (
@@ -140,9 +141,10 @@ function BoardsList() {
                                             <HiX className={styles.boardPanel__header__closeCross} size="1.8em" onClick={() => {
                                                 const newBoards = [...boards];
                                                 newBoards[board_index].tasks = []
-                                                setBoards(
-                                                    newBoards.filter(group => group.tasks.length)
-                                                );
+                                                // setBoards(
+                                                //     newBoards.filter(group => group.tasks.length)
+                                                // );
+                                                setBoards(newBoards)
                                             }} />
                                         </Col>
                                     </Row>
@@ -187,6 +189,7 @@ function BoardsList() {
                     </Col>
                 ))}
                 <Col md="3">
+                    <br /><br />
                     <div className={styles.mainBoardsContainer__addBoard}>
                         <Button onClick={() => {
                             setBoards([...boards, { title: "Nuova Sezione", tasks: [] }]);
