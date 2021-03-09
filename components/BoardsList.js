@@ -66,6 +66,7 @@ function BoardsList() {
 
             //setBoards(newBoards.filter(group => group.tasks.length));
             setBoards(newBoards);
+            console.log(boards)
 
         }
     }
@@ -140,10 +141,8 @@ function BoardsList() {
                                         <Col sm="2" md="2" lg="2">
                                             <HiX className={styles.boardPanel__header__closeCross} size="1.8em" onClick={() => {
                                                 const newBoards = [...boards];
-                                                newBoards[board_index].tasks = []
-                                                // setBoards(
-                                                //     newBoards.filter(group => group.tasks.length)
-                                                // );
+                                                //newBoards[board_index].tasks = []
+                                                newBoards.splice(board_index, 1);
                                                 setBoards(newBoards)
                                             }} />
                                         </Col>

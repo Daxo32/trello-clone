@@ -11,7 +11,7 @@ function Home() {
     const context = useContext(mainContext)
 
     useEffect(() => {
-        console.log(context.userToken)
+        console.log(context)
     }, [])
 
     return (
