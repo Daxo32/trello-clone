@@ -1,18 +1,13 @@
-import { useContext, useEffect } from "react"
+
 import { Container } from "shards-react"
 import Navbar from '../components/NavbarComp'
 import Footer from '../components/Footer'
 import styles from '../styles/Home.module.scss'
-import { mainContext } from '../providers/AuthContext'
 import BoardsList from "../components/BoardsList"
 
-function Home() {
 
-    const context = useContext(mainContext)
 
-    useEffect(() => {
-        console.log(context)
-    }, [])
+function Home(props) {
 
     return (
         <Container fluid className={styles.mainCont}>

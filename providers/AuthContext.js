@@ -7,7 +7,8 @@ const mainContext = createContext()
 function AuthProvider(props) {
 
     const [isAuth, updateIsAuth] = useState(false)
-    const [userName, setUserName] = useState("...")
+    const [userName, setUserName] = useState("")
+    const [userToken, setUserToken] = useState("")
     const [loading, updateLoading] = useState(true)
 
     const provider = new firebase.auth.GoogleAuthProvider()
@@ -16,9 +17,13 @@ function AuthProvider(props) {
         //Ok lets fetch with firebase and see if the user is logged or not!
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                setUserName(user.displayName)
-                updateIsAuth(true)
-                updateLoading(false) //Stop the loading spinner
+                user.getIdToken().then((idToken) => {
+                    setUserName(user.displayName)
+                    setUserToken(idToken)
+                    updateIsAuth(true)
+                    updateLoading(false) //Stop the loading spinner
+                })
+
             } else {
                 updateIsAuth(false)
                 updateLoading(false) //Stop the loading spinner
@@ -47,6 +52,7 @@ function AuthProvider(props) {
             value={{
                 auth: isAuth,
                 username: userName,
+                authToken: userToken,
                 doLogin: login,
                 doLogout: logout
             }}

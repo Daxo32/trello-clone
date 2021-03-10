@@ -35,3 +35,6 @@ next.config.js
 
 # vercel
 .vercel
+
+#firebase-admin keys
+/nodejs_backend/trello-clone-firebase-adminsdk-mmqwk-c7fb57d5bc.json

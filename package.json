@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@react-firebase/auth": "^0.2.10",
+    "axios": "^0.21.1",
     "firebase": "^8.2.9",
     "next": "10.0.6",
     "react": "17.0.1",
