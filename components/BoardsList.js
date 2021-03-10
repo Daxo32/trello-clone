@@ -46,6 +46,7 @@ function BoardsList(props) {
     const [loading, toggleLoading] = useState(true)
 
     useEffect(() => {
+
         if (context.authToken) {
             axios.get("http://localhost:8000/trello-api/user/" + context.authToken)
                 .then(res => {
