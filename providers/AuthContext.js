@@ -41,10 +41,16 @@ function AuthProvider(props) {
     }
 
     const logout = () => {
-        firebase.auth().signOut().then(() => {
-            console.log("out")
-            updateIsAuth(false)
-        })
+        firebase.auth().signOut()
+            .then(() => {
+                console.log(userName + "logged out correctly")
+                updateIsAuth(false)
+                setUserName("")
+                setUserToken("")
+            })
+            .catch((err) => {
+                console.error(err)
+            })
     }
 
     return (

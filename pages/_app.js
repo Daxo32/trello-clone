@@ -7,11 +7,13 @@ import AuthProvider from '../providers/AuthContext'
 
 
 
+
 function MyApp({ Component, pageProps }) {
 
-  return (<AuthProvider>
-    <Home {...pageProps} />
-  </AuthProvider>
+  return (
+    <AuthProvider>
+      <Home {...pageProps} />
+    </AuthProvider>
   )
 }
 

@@ -5,11 +5,11 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { EditText } from 'react-edit-text';
 import { HiX } from "react-icons/hi";
 import Task from './Task'
-import withAuth from './withAuth'
 import ModalTask from './ModalTask'
 import 'react-edit-text/dist/index.css';
 import axios from "axios";
 import { mainContext } from '../providers/AuthContext'
+import LoadingSpinner from "./LoadingSpinner";
 
 
 
@@ -46,14 +46,17 @@ function BoardsList(props) {
     const [loading, toggleLoading] = useState(true)
 
     useEffect(() => {
-        console.log(context)
-        axios.get("http://localhost:8000/trello-api/user/" + context.authToken)
-            .then(res => {
-                console.log(res.data)
-                setBoards([...res.data.boards])
-                toggleLoading(!loading)
-            })
-    }, [])
+        if (context.authToken) {
+            console.log("BITCHCHCH||" + context.authToken)
+            axios.get("http://localhost:8000/trello-api/user/" + context.authToken)
+                .then(res => {
+                    setBoards([...res.data.boards])
+                    toggleLoading(!loading)
+
+                })
+        }
+
+    }, [context.authToken])
 
     //console.log(boards.tasks)
     function onDragEnd(result) {
@@ -106,6 +109,7 @@ function BoardsList(props) {
         const newBoards = [...boards]
         newBoards[ind].title = val
         setBoards(newBoards)
+        updateBoardsToBackend()
     }
     const pushBoardTitleUpdate = (evt) => {
         if (evt.keyCode == 13) {
@@ -153,7 +157,7 @@ function BoardsList(props) {
         <DragDropContext onDragEnd={onDragEnd}>
             { openDialog && <ModalTask openFunc={openDialog} toggleFunc={toggleDialog} boards={boards} board_idx={clicked_board_index} task_idx={clicked_task_index} deltask={delTask} updateTaskFunc={updateTaskInfo} />}
             {loading
-                ? "Loading...."
+                ? <LoadingSpinner />
                 : <Row className={styles.mainBoardsContainer__mainRow}>
                     {boards.map((el, board_index) => (
                         <Col key={board_index + "_" + el.title} sm="6" md="3" lg="3">
@@ -224,6 +228,7 @@ function BoardsList(props) {
                         <div className={styles.mainBoardsContainer__addBoard}>
                             <Button onClick={() => {
                                 setBoards([...boards, { title: "Nuova Sezione", tasks: [] }]);
+                                updateBoardsToBackend()
                             }}>Nuova sezione</Button>
                         </div>
                     </Col>
@@ -234,6 +239,6 @@ function BoardsList(props) {
     );
 }
 
-export default withAuth(BoardsList)
+export default BoardsList
 
 

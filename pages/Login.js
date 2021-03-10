@@ -2,9 +2,12 @@
 import { mainContext } from '../providers/AuthContext'
 import { useContext } from "react"
 import { Container, Card, Row, Col } from "shards-react"
+import { useRouter } from 'next/router'
 import styles from '../styles/login.module.scss'
+import Link from 'next/link'
 function Login() {
     const context = useContext(mainContext)
+    const router = useRouter()
     return (
         <Container>
             <Row>

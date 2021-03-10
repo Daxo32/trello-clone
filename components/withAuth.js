@@ -1,6 +1,6 @@
 import { mainContext } from '../providers/AuthContext'
 import { useContext } from "react"
-import Login from './Login'
+import Login from '../pages/Login'
 const withAuth = Component => {
     const Auth = (props) => {
         // Login data added to props via react context
