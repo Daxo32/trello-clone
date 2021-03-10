@@ -47,7 +47,6 @@ function BoardsList(props) {
 
     useEffect(() => {
         if (context.authToken) {
-            console.log("BITCHCHCH||" + context.authToken)
             axios.get("http://localhost:8000/trello-api/user/" + context.authToken)
                 .then(res => {
                     setBoards([...res.data.boards])
