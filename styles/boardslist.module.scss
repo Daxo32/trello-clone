@@ -12,6 +12,8 @@
 .mainBoardsContainer__mainRow{
     flex-wrap: nowrap;
   }
+  .mainBoardsContainer__addBoard{
+  }
 
 .boardPanel__header{
     padding:10px;
@@ -36,7 +38,7 @@
     margin-bottom: 10px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     .boardPanel{
         width: 100%;
         margin-bottom: 20px;

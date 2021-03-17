@@ -16,7 +16,6 @@ router.get("/users", (req, res) => {
 router.get("/user/:token", (req, res) => {
     firebase.auth().verifyIdToken(req.params.token)
         .then((decodedToken) => {
-            console.log(decodedToken)
             User.find({ token: decodedToken.uid }, (err, doc) => {
                 if (doc.length > 0) { //If the already user exists return the user datad")
                     res.send(doc[0])

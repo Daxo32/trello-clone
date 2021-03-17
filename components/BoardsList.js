@@ -123,7 +123,7 @@ function BoardsList(props) {
         const newBoards = [...boards];
         newBoards[index_board].tasks.splice(index_task, 1);
         setBoards(
-            newBoards.filter(group => group.tasks.length)
+            newBoards
         );
         updateBoardsToBackend()
     }
@@ -133,17 +133,18 @@ function BoardsList(props) {
         if (evt.keyCode == 13) {
             console.log(inputData)
             const newBoards = [...boards]
-            newBoards[inputData.index_board].tasks.push({ id: "id-" + new Date().getTime(), content: inputData.val })
+            newBoards[inputData.index_board].tasks.push({ id: "id-" + new Date().getTime(), content: inputData.val, priority: 0 })
             setBoards(newBoards)
             updateBoardsToBackend()
         }
     }
     //Function that updates the given task on the given board
-    const updateTaskInfo = (board_index, task_index, new_text) => {
+    const updateTaskInfo = (board_index, task_index, new_text, taskPriority) => {
         const newBoards = [...boards]
         newBoards[board_index].tasks[task_index].content = new_text
+        newBoards[board_index].tasks[task_index].priority = taskPriority
         setBoards(newBoards)
-        console.log(board_index, task_index, new_text)
+        console.log(board_index, task_index, new_text, taskPriority)
         updateBoardsToBackend()
     }
 
@@ -160,7 +161,7 @@ function BoardsList(props) {
                 ? <LoadingSpinner />
                 : <Row className={styles.mainBoardsContainer__mainRow}>
                     {boards.map((el, board_index) => (
-                        <Col key={board_index + "_" + el.title} sm="6" md="3" lg="3">
+                        <Col key={board_index + "_" + el.title} sm="6" md="6" lg="3">
                             <Card className={styles.boardPanel}>
                                 <CardHeader className={styles.boardPanel__header}>
                                     <Container fluid>
@@ -206,7 +207,7 @@ function BoardsList(props) {
                                                                 onClick={() => { toggleDialog(true); setClickedBoardIndex(board_index); setClickedTaskIndex(task_index) }}
                                                             >
                                                                 <CardBody key={task_index} className={styles.card_body}>
-                                                                    <Task key={item.id} index_task={task_index} index_board={board_index} text_v={item.content} />
+                                                                    <Task key={item.id} index_task={task_index} index_board={board_index} text_v={item.content} priority={item.priority} />
                                                                 </CardBody>
                                                             </Card>
                                                         )}
@@ -223,7 +224,7 @@ function BoardsList(props) {
                             </Card>
                         </Col>
                     ))}
-                    <Col md="3">
+                    <Col sm="6">
                         <br /><br />
                         <div className={styles.mainBoardsContainer__addBoard}>
                             <Button onClick={() => {
