@@ -50,9 +50,12 @@ function BoardsList(props) {
         if (context.authToken) {
             axios.get("http://localhost:8000/trello-api/user/" + context.authToken)
                 .then(res => {
+                    toggleLoading(false)
+                    console.log(res.data.boards[0])
                     setBoards([...res.data.boards])
-                    toggleLoading(!loading)
-
+                })
+                .catch(err => {
+                    console.error(err)
                 })
         }
 
@@ -106,13 +109,12 @@ function BoardsList(props) {
 
 
     const updateBoardTitle = (val, ind) => {
-        const newBoards = [...boards]
+        let newBoards = [...boards]
         newBoards[ind].title = val
         setBoards(newBoards)
-        updateBoardsToBackend()
     }
     const pushBoardTitleUpdate = (evt) => {
-        if (evt.keyCode == 13) {
+        if (evt.keyCode === 13) {
             updateBoardsToBackend()
         }
     }
@@ -174,6 +176,7 @@ function BoardsList(props) {
                                                         onChange={(val) => updateBoardTitle(val, board_index)}
                                                     />
                                                 </h5>
+
                                             </Col>
                                             <Col sm="2" md="2" lg="2">
                                                 <HiX className={styles.boardPanel__header__closeCross} size="1.8em" onClick={() => {

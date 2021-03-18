@@ -59,14 +59,23 @@ router.post("/user/:token", (req, res) => {
 
 //Deletes the user - NOT NECESSARY FOR NOW
 router.delete("/users/:token", (req, res) => {
-    query = { token: req.params.token }
-    User.deleteOne(query, (err, users) => {
-        if (!err) {
-            res.send(users)
-        } else {
-            res.sendStatus(400)
-        }
-    })
+    firebase.auth().verifyIdToken(req.params.token)
+        .then((decodedToken) => {
+            query = { token: decodedToken.uid }
+            User.deleteOne(query, (err, users) => {
+                if (!err) {
+                    res.send(users)
+                } else {
+                    res.sendStatus(400)
+                }
+            })
+        })
+        .catch((err) => {
+            console.log(err)
+            res.statusCode(500)
+        })
+
+
 })
 
 

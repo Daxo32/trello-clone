@@ -22,6 +22,7 @@ function AuthProvider(props) {
                     setUserToken(idToken)
                     updateIsAuth(true)
                     updateLoading(false) //Stop the loading spinner
+                    console.log(idToken)
                 })
 
             } else {
